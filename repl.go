@@ -13,6 +13,7 @@ const PROMPT = "Pokedex > "
 
 func startRepl(cfg *config) {
 	reader := bufio.NewScanner((os.Stdin))
+	//cache := NewCache(30 * time.Second)
 	for {
 		fmt.Print(PROMPT)
 		reader.Scan()
