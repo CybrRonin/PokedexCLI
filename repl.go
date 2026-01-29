@@ -25,10 +25,14 @@ func startRepl(cfg *config) {
 		}
 
 		cmd := words[0]
+		args := []string{}
+		if len(words) > 1 {
+			args = words[1:]
+		}
 
 		command, exists := getCommands()[cmd]
 		if exists {
-			err := command.callback(cfg)
+			err := command.callback(cfg, args...)
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -55,7 +59,7 @@ type config struct {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, ...string) error
 }
 
 func getCommands() map[string]cliCommand {
@@ -79,6 +83,11 @@ func getCommands() map[string]cliCommand {
 			name:        "mapb",
 			description: "Displays the names of the previous 20 location areas in the Pokemon world",
 			callback:    commandMapb,
+		},
+		"explore": {
+			name:        "explore",
+			description: "Lists all the pokenmon that can be found in a given location area",
+			callback:    commandExplore,
 		},
 	}
 }
