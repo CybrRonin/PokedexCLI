@@ -76,18 +76,23 @@ func getCommands() map[string]cliCommand {
 		},
 		"map": {
 			name:        "map",
-			description: "Displays the names of the next 20 location areas in the Pokemon world",
+			description: "Displays the names of the next 20 location areas in the Pokémon world",
 			callback:    commandMap,
 		},
 		"mapb": {
 			name:        "mapb",
-			description: "Displays the names of the previous 20 location areas in the Pokemon world",
+			description: "Displays the names of the previous 20 location areas in the Pokémon world",
 			callback:    commandMapb,
 		},
 		"explore": {
 			name:        "explore",
 			description: "Lists all the pokenmon that can be found in a given location area",
 			callback:    commandExplore,
+		},
+		"catch": {
+			name:        "catch",
+			description: "attempt to catch a Pokémon and add it to your Pokédex",
+			callback:    commandCatch,
 		},
 	}
 }
